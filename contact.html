@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+
+
+<head>
+
+
+    <meta charset="UTF-8">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Get in touch with Mindpik Technology for inquiries, support, or partnership opportunities. We’re here to help!">
+
+    <title>Mindpik Technology</title>
+
+
+    <!-- Link to Font Awesome for social media icons -->
+
+
+    <!-- <link rel="stylesheet" href="./styles.css"> -->
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+    <script src="./script.js"></script>
+    <!-- WorldMap CSS / Script -->
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+</head>
+
+
+
+<body>
+
+
+    <!-- Top bar with social media icons -->
+
+
+    <!-- <div class="top-bar">
+
+
+        <a href="https://www.facebook.com/share/o4mqgHvV6QnRUXM7/?mibextid=qi2Omg" target="_blank" title="Facebook">
+
+
+            <i class="fab fa-facebook"></i>
+
+
+        </a>
+
+
+        <a href="https://x.com/MindpikTech" target="_blank" title="Twitter">
+
+
+            <i class="fab fa-twitter"></i>
+
+
+        </a>
+
+
+        <a href="https://pin.it/ykpbqtaJe" target="_blank" title="Pinterest">
+
+
+            <i class="fab fa-pinterest"></i>
+
+
+        </a>
+
+
+        <a href="https://www.instagram.com/mindpik_technologies/" target="_blank" title="Instagram">
+
+
+            <i class="fab fa-instagram"></i>
+
+
+        </a>
+
+
+        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7235615639422279680" target="_blank"
+
+            title="LinkedIn">
+
+
+            <i class="fab fa-linkedin"></i>
+
+
+        </a>
+
+
+        <a href="career.html" class="join-us-btn" title="Join Us">
+
+
+            Join Us
+
+
+        </a>
+
+
+
+    </div> -->
+
+
+
+    <!-- Main navigation bar -->
+    <nav>
+        <!-- Left side: company logo -->
+        <div class="logo">
+            <img src="image/logo.png" alt="Company Logo">
+        </div>
+
+        <!-- Hamburger Menu (Visible on Mobile) -->
+        <div class="menu-toggle">&#9776;</div>
+
+        <!-- Right side: navigation links -->
+        <ul class="nav-links">
+            <li><a href="index.html"><b>Home</b></a></li>
+            <li><a href="about.html"><b>About Us</b></a></li>
+            <li id="service-tab">
+                <a href="service.html"><b>Services</b></a>
+                <ul class="dropdown">
+                    <li><a href="service.html">Customized / Enterprise Software Development</a></li>
+                    <li><a href="service.html">GIS Based Application Development</a></li>
+                    <li><a href="service.html">App Development</a></li>
+                    <li><a href="service.html">Web Based Services</a></li>
+                    <li><a href="service.html">Consulting & Project Management</a></li>
+                </ul>
+            </li>
+            <li><a href="career.html"><b>Career</b></a></li>
+            <li><a href="contact.html"><b>Contact Us</b></a></li>
+        </ul>
+    </nav>
+
+    <div class="contact-blue-bar">
+
+
+
+    </div>
+
+
+    <!-- <div class="white-bar">
+
+
+   
+
+
+    </div> -->
+
+    <div class="contact-bar-background">
+        <div class="contact-bar">
+            <h2>Contact Us</h2>
+            <form class="contact-form" id="contact-form">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="query" placeholder="Your Query" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+            <div id="success-message" style="display:none;">
+                <p>Thank you for your submission. We will get back to you soon!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-blue-bar">
+
+    </div>
+
+
+    <div class="primary-location-bar">
+
+
+        <h2>Our Primary Location</h2>
+
+
+        <div class="location-logo">
+
+
+            <i class="fas fa-map-marker-alt"></i> <!-- Font Awesome icon -->
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="map-container">
+
+
+        <!-- <iframe
+
+
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.362187334117!2d88.40680517435415!3d22.60294633185922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0275006e8ad397%3A0x27e6a41fe081a578!2sMindpik%20Technologies%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1733127968149!5m2!1sen!2sin"
+
+
+            allowfullscreen="" loading="lazy" class="map"></iframe>
+
+
+        <iframe
+
+
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2960.7749395230267!2d-88.44995032243908!3d42.090871388472195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880f17a3d8ccd749%3A0x38dfc2a80348640b!2s1657%20Emma%20Ln%2C%20Pingree%20Grove%2C%20IL%2060140%2C%20USA!5e0!3m2!1sen!2sin!4v1733128586542!5m2!1sen!2sin"
+
+
+            allowfullscreen="" loading="lazy" class="map"></iframe> -->
+
+
+        <!-- Map container -->
+
+        <div id="map">
+
+            <script>
+
+                // Initialize the map with Leaflet.js
+
+                const map = L.map('map', {
+
+                    zoomControl: false,  // Disables zoom control on the map
+
+                    dragging: false,     // Disables dragging of the map
+
+                    scrollWheelZoom: false, // Disables zoom with scroll wheel
+
+                    doubleClickZoom: false, // Disables zoom on double click
+
+                    attributionControl: false // Disables the attribution control entirely
+
+                }).setView([20, 40], 2); // Set initial center and zoom level
+
+
+                // Add OpenStreetMap tiles
+
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+
+                    maxZoom: 18
+
+                }).addTo(map);
+
+
+                // Office locations (India and USA)
+
+                const locations = [
+
+                    {
+
+                        coords: [22.6029, 88.4068], // India
+
+                        name: "Mindpik Technologies Pvt. Ltd. \n 177, Block - C, 1st Floor, Bangur Avenue, Kolkata - 700 055, India"
+
+                    },
+
+                    {
+
+                        coords: [42.0909, -88.4499], // USA
+
+                        name: "Mindpik Technologies Pvt. Ltd. \n 1657 Emma Ln, Pingree Grove, IL, USA"
+
+                    }
+
+                ];
+
+
+                // Add markers and popups for both office locations
+
+                locations.forEach(location => {
+
+                    const marker = L.marker(location.coords).addTo(map);
+
+                    marker.bindPopup(location.name);
+
+                });
+
+
+                // Restrict map bounds (focus on areas around India and the USA)
+
+                const bounds = [
+
+                    [-30, -130], // Southwest corner
+
+                    [60, 130]    // Northeast corner
+
+                ];
+
+                map.setMaxBounds(bounds);
+
+
+                // Disable map interactions completely (even if the user tries to drag/zoom)
+
+                map.touchZoom.disable();
+
+                map.boxZoom.disable();
+
+                map.keyboard.disable();
+
+            </script>
+
+        </div>
+
+    </div>
+    &nbsp;<br>&nbsp;
+    <!-- <div class="gray-bar">
+    </div> -->
+
+    <div class="pre-pre-footer-bar">
+
+
+        <!-- <div class="pre-pre-footer-bar-column">
+
+
+            <div class="location-container">
+
+
+                <img src="image/location-icon.png" alt="Location Icon" class="location-icon">
+
+
+                <p textalign="left" class="location-text">Registered Office :</p>
+
+
+            </div>
+
+
+            <p textalign="left">DEEP APARTMENT,
+
+
+                192, Dum Dum Park
+
+
+                Kolkata - 700 055
+
+
+            </p>
+
+
+        </div> -->
+
+
+        <div class="pre-pre-footer-bar-column">
+            <div class="location-container">
+                <div class="location-entry">
+                    <img src="image/location-icon.png" alt="Location Icon" class="location-icon">
+                    <p style="text-align: left;" class="location-text">Corporate Office :</p>
+                </div>
+                <div class="location-entry">
+                    <p class="location-address">
+                        177, Block - C, 1st Floor,
+                        Bangur Avenue
+                        Kolkata - 700 055</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="pre-pre-footer-bar-column">
+            <div class="location-container">
+                <div class="location-entry">
+                    <img src="image/location-icon.png" alt="Location Icon" class="location-icon">
+                    <p style="text-align: left;" class="location-text">USA Office :</p>
+                </div>
+                <div class="location-entry">
+
+                    <p class="location-address">
+                        1657 Emma Ln,
+                        Pingree Grove IL 60140,
+                        Green Chicago Area</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="pre-pre-footer-bar-column">
+            <div class="net-container">
+                <div class="net-entry">
+                    <img src="image/net-icon.png" alt="Net Icon" class="net-icon">
+                    <p>https://www.mindpik.co.in</p>
+                </div>
+                <div class="mail-entry">
+                    <img src="image/mail-icon.png" alt="Mail Icon" class="mail-icon">
+                    <p>info@mindpik.co.in</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="pre-pre-footer-bar-column">
+
+
+            <div class="call-container">
+
+
+                <div class="call-entry">
+
+
+                    <img src="image/call-icon.png" alt="Call Icon" class="call-icon">
+
+
+                    <p>+91 98115 00219</p>
+
+
+                </div>
+
+
+                <div class="call-entry">
+
+
+                    <img src="image/call-icon.png" alt="Call Icon" class="call-icon">
+
+
+                    <p>+1 (563) 5793149</p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+    <div class="pre-footer-bar">
+        <div class="pre-footer-column">
+            <img src="images/logo.svg" alt="Company Logo" class="company-logo">
+            <p class="justified-text" style="color: black;">At Mindpik Technology, we innovate and provide top-notch
+                solutions to empower your digital journey. From IT services to cutting-edge solutions, we’re here to
+                make your ideas a reality.</p>
+            </p>
+        </div>
+        <div class="pre-footer-column">
+
+            <h4></h4>
+
+            <ul>
+
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="career.html">Career</a></li>
+                <!-- <li><a href="#certification">Certification</a></li> -->
+                <li><a href="contact.html">Contact Us</a></li>
+
+            </ul>
+        </div>
+
+        <div class="pre-footer-column">
+            <h4>Services</h4>
+            <ul>
+                <li><a href="service.html">Customized / Enterprise Software Development</a></li>
+                <li><a href="service.html">GIS Based Application Development</a></li>
+                <li><a href="service.html">App Development</a></li>
+                <li><a href="service.html">Web Based Services</a></li>
+                <li><a href="service.html">Consulting & Project Management</a></li>
+            </ul>
+        </div>
+        <div class="pre-footer-column">
+            <h4>Follow Us</h4>
+            <ul>
+                <li><a href="https://www.facebook.com/share/o4mqgHvV6QnRUXM7/?mibextid=qi2Omg"
+                        target="_blank">Facebook</a></li>
+                <li><a href="https://x.com/MindpikTech" target="_blank">Twitter</a></li>
+                <li><a href="https://www.linkedin.com/feed/update/urn:li:activity:7235615639422279680"
+                        target="_blank">LinkedIn</a></li>
+                <li><a href="https://www.instagram.com/mindpik_technologies/" target="_blank">Instagram</a></li>
+            </ul>
+            <div class="social-icons">
+                <div class="icon-box">
+                    <a href="https://www.facebook.com/share/o4mqgHvV6QnRUXM7/?mibextid=qi2Omg" target="_blank"
+                        title="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+                <div class="icon-box">
+                    <a href="https://x.com/MindpikTech" target="_blank" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+                <div class="icon-box"><a href="https://pin.it/ykpbqtaJe" target="_blank" title="Pinterest">
+                        <i class="fab fa-pinterest"></i>
+                    </a>
+                </div>
+                <div class="icon-box">
+                    <a href="https://www.instagram.com/mindpik_technologies/" target="_blank" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                <div class="icon-box">
+                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7235615639422279680" target="_blank"
+                        title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer-bar">
+        <div class="footer-content">
+            <p class="footer-left">&copy;&nbsp;2024&nbsp;Mindpik&nbsp;Technology.&nbsp;All&nbsp;Rights&nbsp;Reserved.
+            </p>
+        </div>
+    </div>
+    <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+
+    <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                
+                <a href="#terms">Terms & Conditions</a>
+            
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="#privacy">Privacy Policy</a> -->
+
+    <!-- Chatbot Toggle Button -->
+    <button id="toggle-chatbot" onclick="toggleChatbot()">
+        <span>💬</span> Chat
+    </button>
+
+    <!-- Chatbot Container -->
+    <div id="chatbot-container">
+        <div id="chat-header">
+            <h3>Chatbot</h3>
+            <button id="close-chatbot" onclick="toggleChatbot()">×</button>
+        </div>
+        <div id="chatbox"></div>
+        <div id="input-container">
+            <input type="text" id="user-input" placeholder="Type a message..." onkeydown="handleKey(event)" />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+
+    <!-- <script>
+        const botResponses = {
+            "hello": "Hi! How can I help you today?",
+            "hi": "Hi! May I know your name?",
+            "tell me about your company": "We offer software development, IT consulting, cloud solutions, and technical support. Which one are you interested in?",
+            "what services do you offer": "We provide web development, mobile app development, cloud solutions, and technical consulting. Would you like more details?",
+            "how can i contact you": "You can reach us at:\n📧 Email: contact@company.com\n📞 Phone: +919811500219\nWould you like to chat with us on WhatsApp?",
+            "contact": "You can reach us at:\n📧 Email: contact@company.com\n📞 Phone: +919811500219\nWould you like to chat with us on WhatsApp?",
+            "are there any job vacancies": "Yes, we are hiring for various positions in software development, marketing, and customer support. Please share your email, and we will send you the details.",
+            "what type of job you offers": "We are hiring for various positions in software development, marketing, and customer support. Please share your email, and we will send you the details.",
+            "how can i apply for a job": "You can send your updated resume to jobs@company.com. Our HR team will review it and get back to you.",
+            "job": "You can send your updated resume to jobs@company.com. Our HR team will review it and get back to you.",
+            "what is the recruitment process": "Our recruitment process includes an initial resume screening, a technical test, and an interview with the hiring manager. Do you have any specific questions about it?",
+            "do you offer internships": "Yes, we offer internships in software development, data analysis, and design. Would you like to know more about the internship program? You can contact 📧 Email: contact@company.com\n📞 Phone: +919811500219\n",
+            "internships": "Yes, we offer internships in software development, data analysis, and design. Would you like to know more about the internship program? You can contact 📧 Email: contact@company.com\n📞 Phone: +919811500219 ",
+            "default": "I'm sorry, I didn't understand that. Could you please rephrase or ask something else?"
+
+
+        };
+
+        let userName = "";
+
+        // Function to toggle chatbot visibility
+        function toggleChatbot() {
+            const chatbot = document.getElementById("chatbot-container");
+            chatbot.style.display = chatbot.style.display === "none" || chatbot.style.display === "" ? "flex" : "none";
+        }
+
+        // Function to handle user messages and bot responses
+        function sendMessage() {
+            const userInput = document.getElementById("user-input").value.trim();
+            if (!userInput) return;
+
+            // Display user message
+            appendMessage(userInput, "user-message");
+
+            // Determine bot response
+            let botReply = "";
+            if (userInput.toLowerCase().startsWith("my name is")) {
+                userName = userInput.slice(11);
+                botReply = `Nice to meet you, ${userName}! How can I assist you?`;
+            } else if (userInput.toLowerCase().includes("contact")) {
+                botReply = botResponses["how can i contact you"];
+                appendMessage(botReply, "bot-message");
+                appendWhatsAppButton("+919811500219"); // Example WhatsApp number
+                return;
+            } else {
+                botReply = botResponses[userInput.toLowerCase()] || botResponses["default"];
+            }
+
+            // Display bot message
+            appendMessage(botReply, "bot-message");
+
+            // Clear input and scroll to the bottom
+            document.getElementById("user-input").value = "";
+            document.getElementById("chatbox").scrollTop = document.getElementById("chatbox").scrollHeight;
+        }
+
+        // Helper function to append messages
+        function appendMessage(message, className) {
+            const messageDiv = document.createElement("div");
+            messageDiv.className = className;
+            messageDiv.textContent = message;
+            document.getElementById("chatbox").appendChild(messageDiv);
+        }
+
+        // Function to append WhatsApp button
+        // Function to append WhatsApp button
+        function appendWhatsAppButton(phoneNumber) {
+            const button = document.createElement("button");
+            button.textContent = "Chat on WhatsApp";
+            button.onclick = function () {
+                // URL to open WhatsApp Web with pre-filled number
+                const url = `https://web.whatsapp.com/send?phone=${phoneNumber}&text=Hi!`;
+                window.open(url, "_blank");
+            };
+            const botMessageDiv = document.createElement("div");
+            botMessageDiv.className = "bot-message";
+            botMessageDiv.appendChild(button);
+            document.getElementById("chatbox").appendChild(botMessageDiv);
+        }
+
+
+        // Function to handle Enter key press
+        function handleKey(event) {
+            if (event.key === "Enter") {
+                sendMessage();
+            }
+        }
+    </script> -->
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevents the default form submission
+            var formData = new FormData(this); // Collects the form data
+            // Make the AJAX request
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "contact_email.php", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // If the request is successful, show the success message
+                    document.getElementById('success-message').style.display = 'block';
+                    document.getElementById('contact-form').reset(); // Reset the form fields
+                    // Optionally, you can also hide the success message after a few seconds
+                    setTimeout(function () {
+                        document.getElementById('success-message').style.display = 'none';
+                    }, 2000);
+                }
+            };
+            xhr.send(formData); // Sends the form data
+        });
+    </script>
+    <!-- <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        // Toggle menu on click
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script> -->
+
+</body>
+
+
+</html>
