@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mindpik.co.in/sitemap.xml
+Sitemap: https://suraj-mahakud.github.io/publicweb/sitemap.xml
