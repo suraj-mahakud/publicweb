@@ -1,4 +1,5 @@
 User-agent: *
+Disallow: /admin/
+Disallow: /login/
 Allow: /
-
-Sitemap: https://suraj-mahakud.github.io/publicweb/sitemap.xml
+Sitemap: https://mindpik.co.in/sitemap.xml
