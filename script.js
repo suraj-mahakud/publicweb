@@ -1,173 +1,385 @@
-// Navbar // Toggle Menu JS Script Start //
-document.addEventListener('DOMContentLoaded', () => {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
+/* ===== Vivek Aluminium Fabricator - Main Script ===== */
 
-    menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('open'); // Toggle the menu visibility
-        navLinks.classList.toggle('active');
-    });
-});
-// Navbar // Toggle Menu JS Script End //
+// ---------- Navbar ----------
+const navbar = document.getElementById('navbar');
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
 
-// FAQ question JS Script //
-document.addEventListener('DOMContentLoaded', () => {
-    const faqQuestions = document.querySelectorAll('.faq-question');
-    faqQuestions.forEach(button => {
-        button.addEventListener('click', function () {
-            const answer = this.nextElementSibling;
-            const arrow = this.querySelector('.arrow');
-
-            // Toggle answer visibility
-            if (answer.style.display === 'block') {
-                answer.style.display = 'none';
-                arrow.classList.remove('open');
-            } else {
-                answer.style.display = 'block';
-                arrow.classList.add('open');
-            }
-        });
-    });
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
 });
 
-
-// Add event listeners to the dropdown buttons
-document.querySelectorAll('.dropdown-btn').forEach(button => {
-    button.addEventListener('click', function () {
-        const listItem = this.closest('.list-item'); // Get the closest list item
-        listItem.classList.toggle('active'); // Toggle the "active" class to show/hide the dropdown
-    });
+menuToggle.addEventListener('click', () => {
+  menuToggle.classList.toggle('active');
+  navLinks.classList.toggle('open');
 });
-// FAQ question JS Script //
-function toggleMenu() { const navLinks = document.querySelector('.nav-links'); navLinks.classList.toggle('show'); }
-/////////////Chatbot/Widget/Script/for/all/Pages//////////////////////
-const botResponses = {
-    "hello": "Hi! How can I help you today?",
-    "hi": "Hi! May I know your name?",
-    "tell me about your company": "We offer software development, IT consulting, cloud solutions, and technical support. Which one are you interested in?",
-    "what services do you offer": "We provide web development, mobile app development, cloud solutions, and technical consulting. Would you like more details?",
-    "how can i contact you": "You can reach us at:\n📧 Email: contact@company.com\n📞 Phone: +919811500219\nWould you like to chat with us on WhatsApp?",
-    "contact": "You can reach us at:\n📧 Email: contact@company.com\n📞 Phone: +919811500219\nWould you like to chat with us on WhatsApp?",
-    "are there any job vacancies": "Yes, we are hiring for various positions in software development, marketing, and customer support. Please share your email, and we will send you the details.",
-    "what type of job you offers": "We are hiring for various positions in software development, marketing, and customer support. Please share your email, and we will send you the details.",
-    "how can i apply for a job": "You can send your updated resume to jobs@company.com. Our HR team will review it and get back to you.",
-    "job": "You can send your updated resume to jobs@company.com. Our HR team will review it and get back to you.",
-    "what is the recruitment process": "Our recruitment process includes an initial resume screening, a technical test, and an interview with the hiring manager. Do you have any specific questions about it?",
-    "do you offer internships": "Yes, we offer internships in software development, data analysis, and design. Would you like to know more about the internship program? You can contact 📧 Email: contact@company.com\n📞 Phone: +919811500219\n",
-    "internships": "Yes, we offer internships in software development, data analysis, and design. Would you like to know more about the internship program? You can contact 📧 Email: contact@company.com\n📞 Phone: +919811500219 ",
-    "default": "I'm sorry, I didn't understand that. Could you please rephrase or ask something else?"
 
+// Close mobile menu on link click
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    menuToggle.classList.remove('active');
+    navLinks.classList.remove('open');
+  });
+});
 
-};
+// ---------- Three.js Hero Canvas ----------
+(function initHero3D() {
+  const canvas = document.getElementById('heroCanvas');
+  if (!canvas || typeof THREE === 'undefined') return;
 
-let userName = "";
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+  camera.position.z = 28;
 
-// Function to toggle chatbot visibility
-function toggleChatbot() {
-    const chatbot = document.getElementById("chatbot-container");
-    chatbot.style.display = chatbot.style.display === "none" || chatbot.style.display === "" ? "flex" : "none";
-}
+  const renderer = new THREE.WebGLRenderer({
+    canvas,
+    antialias: true,
+    alpha: true
+  });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setClearColor(0x000000, 0);
 
-// Function to handle user messages and bot responses
-function sendMessage() {
-    const userInput = document.getElementById("user-input").value.trim();
-    if (!userInput) return;
+  // Lights
+  const ambientLight = new THREE.AmbientLight(0x404060, 0.6);
+  scene.add(ambientLight);
 
-    // Display user message
-    appendMessage(userInput, "user-message");
+  const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
+  dirLight.position.set(10, 15, 10);
+  scene.add(dirLight);
 
-    // Determine bot response
-    let botReply = "";
-    if (userInput.toLowerCase().startsWith("my name is")) {
-        userName = userInput.slice(11);
-        botReply = `Nice to meet you, ${userName}! How can I assist you?`;
-    } else if (userInput.toLowerCase().includes("contact")) {
-        botReply = botResponses["how can i contact you"];
-        appendMessage(botReply, "bot-message");
-        appendWhatsAppButton("+919811500219"); // Example WhatsApp number
-        return;
-    } else {
-        botReply = botResponses[userInput.toLowerCase()] || botResponses["default"];
+  const pointLight = new THREE.PointLight(0x00d4ff, 1.5, 80);
+  pointLight.position.set(-10, 5, 15);
+  scene.add(pointLight);
+
+  const pointLight2 = new THREE.PointLight(0xa0a0c0, 0.8, 60);
+  pointLight2.position.set(15, -8, 10);
+  scene.add(pointLight2);
+
+  // Metallic material (aluminium-like)
+  const metalMat = new THREE.MeshStandardMaterial({
+    color: 0xc8c8d0,
+    metalness: 0.95,
+    roughness: 0.18,
+    envMapIntensity: 1.2
+  });
+
+  const accentMat = new THREE.MeshStandardMaterial({
+    color: 0x00d4ff,
+    metalness: 0.7,
+    roughness: 0.25,
+    emissive: 0x003344,
+    emissiveIntensity: 0.3
+  });
+
+  // Create abstract aluminium profiles / bars
+  const group = new THREE.Group();
+  scene.add(group);
+
+  // Long rectangular profiles (like extrusion bars)
+  function createBar(w, h, d, mat) {
+    const geo = new THREE.BoxGeometry(w, h, d);
+    return new THREE.Mesh(geo, mat);
+  }
+
+  // Central structure - interlocking bars
+  const bars = [];
+  const positions = [
+    { x: 0, y: 0, z: 0, rx: 0, ry: 0, rz: 0, s: [8, 0.6, 0.6] },
+    { x: 0, y: 2.5, z: 0, rx: 0, ry: 0.3, rz: 0, s: [6, 0.5, 0.5] },
+    { x: 0, y: -2.5, z: 0, rx: 0, ry: -0.3, rz: 0, s: [6, 0.5, 0.5] },
+    { x: 3, y: 0, z: 1, rx: 0.4, ry: 0, rz: 0.5, s: [0.5, 5, 0.5] },
+    { x: -3, y: 0, z: -1, rx: -0.3, ry: 0, rz: -0.4, s: [0.5, 5, 0.5] },
+    { x: 0, y: 0, z: 2.5, rx: 0, ry: 0.6, rz: 0.2, s: [5, 0.4, 0.4] },
+    { x: 1.5, y: 1.5, z: -2, rx: 0.5, ry: 0.2, rz: 0, s: [4, 0.35, 0.35] },
+    { x: -2, y: -1.2, z: 1.5, rx: -0.2, ry: -0.4, rz: 0.3, s: [4.5, 0.4, 0.4] }
+  ];
+
+  positions.forEach((p, i) => {
+    const mat = i % 3 === 0 ? accentMat : metalMat;
+    const bar = createBar(...p.s, mat);
+    bar.position.set(p.x, p.y, p.z);
+    bar.rotation.set(p.rx, p.ry, p.rz);
+    group.add(bar);
+    bars.push(bar);
+  });
+
+  // Floating rings (like frames / profiles)
+  const ringGeo = new THREE.TorusGeometry(3.5, 0.15, 16, 64);
+  const ring1 = new THREE.Mesh(ringGeo, metalMat);
+  ring1.rotation.x = Math.PI / 2.5;
+  group.add(ring1);
+
+  const ring2 = new THREE.Mesh(new THREE.TorusGeometry(5, 0.12, 16, 80), accentMat);
+  ring2.rotation.x = Math.PI / 3;
+  ring2.rotation.y = 0.4;
+  group.add(ring2);
+
+  // Small spheres as joints / rivets
+  const sphereGeo = new THREE.SphereGeometry(0.25, 16, 16);
+  for (let i = 0; i < 12; i++) {
+    const sphere = new THREE.Mesh(sphereGeo, i % 2 ? accentMat : metalMat);
+    const angle = (i / 12) * Math.PI * 2;
+    const r = 4 + Math.random() * 3;
+    sphere.position.set(
+      Math.cos(angle) * r,
+      (Math.random() - 0.5) * 6,
+      Math.sin(angle) * r
+    );
+    group.add(sphere);
+  }
+
+  // Particles (sparks / metal dust)
+  const particleCount = 180;
+  const particlesGeo = new THREE.BufferGeometry();
+  const positionsArr = new Float32Array(particleCount * 3);
+  const velocities = [];
+
+  for (let i = 0; i < particleCount; i++) {
+    positionsArr[i * 3] = (Math.random() - 0.5) * 40;
+    positionsArr[i * 3 + 1] = (Math.random() - 0.5) * 30;
+    positionsArr[i * 3 + 2] = (Math.random() - 0.5) * 30;
+    velocities.push({
+      x: (Math.random() - 0.5) * 0.02,
+      y: (Math.random() - 0.5) * 0.02,
+      z: (Math.random() - 0.5) * 0.02
+    });
+  }
+  particlesGeo.setAttribute('position', new THREE.BufferAttribute(positionsArr, 3));
+
+  const particlesMat = new THREE.PointsMaterial({
+    color: 0x00d4ff,
+    size: 0.08,
+    transparent: true,
+    opacity: 0.7,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false
+  });
+  const particles = new THREE.Points(particlesGeo, particlesMat);
+  scene.add(particles);
+
+  // Mouse interaction
+  let mouseX = 0, mouseY = 0;
+  let targetX = 0, targetY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+    mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+  });
+
+  // Resize
+  function onResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  }
+  window.addEventListener('resize', onResize);
+
+  // Animation loop
+  const clock = new THREE.Clock();
+
+  function animate() {
+    requestAnimationFrame(animate);
+    const t = clock.getElapsedTime();
+
+    // Rotate main group slowly
+    group.rotation.y = t * 0.12;
+    group.rotation.x = Math.sin(t * 0.2) * 0.08;
+
+    // Individual bar subtle motion
+    bars.forEach((bar, i) => {
+      bar.rotation.z += 0.002 * (i % 2 ? 1 : -1);
+    });
+
+    // Rings
+    ring1.rotation.z = t * 0.15;
+    ring2.rotation.z = -t * 0.1;
+
+    // Mouse parallax
+    targetX += (mouseX * 3 - targetX) * 0.05;
+    targetY += (mouseY * 2 - targetY) * 0.05;
+    group.position.x = targetX;
+    group.position.y = targetY;
+
+    // Particles drift
+    const pos = particles.geometry.attributes.position.array;
+    for (let i = 0; i < particleCount; i++) {
+      pos[i * 3] += velocities[i].x;
+      pos[i * 3 + 1] += velocities[i].y;
+      pos[i * 3 + 2] += velocities[i].z;
+
+      // Wrap around
+      if (Math.abs(pos[i * 3]) > 25) velocities[i].x *= -1;
+      if (Math.abs(pos[i * 3 + 1]) > 20) velocities[i].y *= -1;
+      if (Math.abs(pos[i * 3 + 2]) > 20) velocities[i].z *= -1;
     }
+    particles.geometry.attributes.position.needsUpdate = true;
+    particles.rotation.y = t * 0.02;
 
-    // Display bot message
-    appendMessage(botReply, "bot-message");
+    // Subtle camera float
+    camera.position.x = Math.sin(t * 0.1) * 1.5;
+    camera.position.y = Math.cos(t * 0.15) * 0.8;
+    camera.lookAt(0, 0, 0);
 
-    // Clear input and scroll to the bottom
-    document.getElementById("user-input").value = "";
-    document.getElementById("chatbox").scrollTop = document.getElementById("chatbox").scrollHeight;
+    renderer.render(scene, camera);
+  }
+
+  animate();
+})();
+
+// ---------- Scroll Animations (GSAP) ----------
+if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Section headers
+  gsap.utils.toArray('.section-header').forEach(header => {
+    gsap.from(header, {
+      scrollTrigger: {
+        trigger: header,
+        start: 'top 85%',
+        toggleActions: 'play none none none'
+      },
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      ease: 'power2.out'
+    });
+  });
+
+  // About content
+  gsap.from('.about-content', {
+    scrollTrigger: { trigger: '.about-content', start: 'top 80%' },
+    x: -50,
+    opacity: 0,
+    duration: 0.9,
+    ease: 'power2.out'
+  });
+  gsap.from('.about-card', {
+    scrollTrigger: { trigger: '.about-card', start: 'top 80%' },
+    x: 50,
+    opacity: 0,
+    duration: 0.9,
+    ease: 'power2.out'
+  });
+
+  // Service cards stagger
+  gsap.from('.service-card', {
+    scrollTrigger: { trigger: '.services-grid', start: 'top 80%' },
+    y: 60,
+    opacity: 0,
+    duration: 0.7,
+    stagger: 0.12,
+    ease: 'power2.out'
+  });
+
+  // Gallery items
+  gsap.from('.gallery-item', {
+    scrollTrigger: { trigger: '.gallery-grid', start: 'top 80%' },
+    scale: 0.9,
+    opacity: 0,
+    duration: 0.6,
+    stagger: 0.1,
+    ease: 'power2.out'
+  });
+
+  // Contact
+  gsap.from('.info-card', {
+    scrollTrigger: { trigger: '.contact-wrapper', start: 'top 80%' },
+    x: -40,
+    opacity: 0,
+    duration: 0.8
+  });
+  gsap.from('.enquiry-form', {
+    scrollTrigger: { trigger: '.contact-wrapper', start: 'top 80%' },
+    x: 40,
+    opacity: 0,
+    duration: 0.8
+  });
 }
 
-// Helper function to append messages
-function appendMessage(message, className) {
-    const messageDiv = document.createElement("div");
-    messageDiv.className = className;
-    messageDiv.textContent = message;
-    document.getElementById("chatbox").appendChild(messageDiv);
-}
+// ---------- Stats Counter ----------
+function animateCounters() {
+  const counters = document.querySelectorAll('.stat-number');
+  counters.forEach(counter => {
+    const target = +counter.getAttribute('data-count');
+    const duration = 2000;
+    const start = performance.now();
 
-// Function to append WhatsApp button
-// Function to append WhatsApp button
-function appendWhatsAppButton(phoneNumber) {
-    const button = document.createElement("button");
-    button.textContent = "Chat on WhatsApp";
-    button.onclick = function () {
-        // URL to open WhatsApp Web with pre-filled number
-        const url = `https://web.whatsapp.com/send?phone=${phoneNumber}&text=Hi!`;
-        window.open(url, "_blank");
-    };
-    const botMessageDiv = document.createElement("div");
-    botMessageDiv.className = "bot-message";
-    botMessageDiv.appendChild(button);
-    document.getElementById("chatbox").appendChild(botMessageDiv);
-}
-
-/////////////Chatbot/Widget/Script/for/all/Pages//////////////////////
-/////////Career/Page/Slider//&//Home/Page/slider///////
-// Function to handle Enter key press
-function handleKey(event) {
-    if (event.key === "Enter") {
-        sendMessage();
+    function update(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      counter.textContent = Math.floor(eased * target);
+      if (progress < 1) requestAnimationFrame(update);
+      else counter.textContent = target;
     }
+    requestAnimationFrame(update);
+  });
 }
 
-// Universal Slider Logic
-function initializeSlider(slideClass, containerClass) {
-    let index = 0; // Start at the first image
-    const slides = document.querySelectorAll(slideClass); // Select the slides based on the provided class
-    const slidesContainer = document.querySelector(containerClass); // Select the container based on the provided class
-
-    // Function to move the slider
-    function moveSlide(direction) {
-        index += direction;
-        if (index < 0) {
-            index = slides.length - 1; // Go to the last image if we're at the first one
-        } else if (index >= slides.length) {
-            index = 0; // Go to the first image if we're at the last one
-        }
-
-    }
-
-    // Automatic sliding every 3 seconds
-    setInterval(() => moveSlide(1), 3000);
+const aboutSection = document.querySelector('.about');
+if (aboutSection) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounters();
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+  observer.observe(aboutSection);
 }
 
-// Initialize the first slider (generic page slider)
-initializeSlider(".slideindex", ".slides-index");
+// ---------- Form Handling ----------
+const form = document.getElementById('enquiryForm');
+const modal = document.getElementById('successModal');
+const closeModal = document.getElementById('closeModal');
 
-// Initialize the second slider (career page slider)
-initializeSlider(".slide-career", ".slides-career");
+if (form) {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-/////////Career/Page/Slider//&//Home/Page/slider///////
+    const btn = form.querySelector('button[type="submit"]');
+    const btnText = btn.querySelector('.btn-text');
+    const btnLoader = btn.querySelector('.btn-loader');
 
-///////For///Career///Form/////////////
+    btnText.hidden = true;
+    btnLoader.hidden = false;
+    btn.disabled = true;
 
-// Career Form Submission Logic //
+    // Simulate submission (in production, send to backend / email service)
+    setTimeout(() => {
+      btnText.hidden = false;
+      btnLoader.hidden = true;
+      btn.disabled = false;
+      form.reset();
+      modal.hidden = false;
+    }, 1200);
+  });
+}
 
-// Contact Form Submission Logic \\
+if (closeModal) {
+  closeModal.addEventListener('click', () => {
+    modal.hidden = true;
+  });
+}
 
-// Contact Form Submission Logic on Contact Page \\
+modal?.addEventListener('click', (e) => {
+  if (e.target === modal) modal.hidden = true;
+});
 
-// World Map Script on Contact Page \\
-
-// World Map Script on Contact Page \\
+// ---------- Simple tilt effect on service cards ----------
+document.querySelectorAll('[data-tilt]').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = (y - centerY) / 20;
+    const rotateY = (centerX - x) / 20;
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px) scale(1.02)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
